@@ -1,0 +1,24 @@
+{
+  "name": "fullstack_open_2020_part4",
+  "version": "1.0.0",
+  "description": "Fullstack Open 2020 Part 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcole90/fullstack_open_2020_part4.git"
+  },
+  "author": "Fabio Colella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fcole90/fullstack_open_2020_part4/issues"
+  },
+  "homepage": "https://github.com/fcole90/fullstack_open_2020_part4#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.5"
+  }
+}
