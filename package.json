@@ -18,7 +18,9 @@
   "homepage": "https://github.com/fcole90/fullstack_open_2020_part4#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.5"
+    "mongoose": "^5.11.5",
+    "nodemon": "^2.0.6"
   }
 }
