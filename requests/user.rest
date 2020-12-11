@@ -1,0 +1,46 @@
+GET http://localhost:3003/api/users/
+
+###
+
+GET http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+
+###
+DELETE http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+
+###
+
+POST http://localhost:3003/api/users/
+content-type: application/json
+
+{
+	"username":"mluukkai",
+	"name":"Matti Luukkainen",
+	"password":"salainen"
+}
+
+
+###
+
+POST http://localhost:3003/api/users/
+content-type: application/json
+
+
+{
+	"username":"bob",
+	"name":"Robert C. Martin",
+	"password":"salainen"
+}
+
+
+### 
+
+
+PUT http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+content-type: application/json
+
+{
+	"title": "Updated",
+	"author": "Michael Chan",
+	"url": "https://reactpatterns.com/",
+	"likes": 7
+}

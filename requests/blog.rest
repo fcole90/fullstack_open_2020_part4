@@ -2,4 +2,53 @@ GET http://localhost:3003/api/blogs/
 
 ###
 
+GET http://localhost:3003/api/blogs/5fd221801aa6881f9aad53c7/
+
+###
+DELETE http://localhost:3003/api/blogs/5fd285e319f073172a5e1477/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZmQyMDc2MzJmZGYxOGRhNzJjYzFkNTIiLCJpYXQiOjE2MDc2MTYwMTF9.hWg2jviVZkxWM7XqZJYBI4e-lKD_DizHj3vdIf8wIPA
+
+###
+
 POST http://localhost:3003/api/blogs/
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZmQyMDc2MzJmZGYxOGRhNzJjYzFkNTIiLCJpYXQiOjE2MDc2MTYwMTF9.hWg2jviVZkxWM7XqZJYBI4e-lKD_DizHj3vdIf8wIPA
+
+{
+	"title": "Delete me",
+	"url": "https://reactpatterns.com/",
+	"likes": 7
+}
+
+###
+POST http://localhost:3003/api/blogs/
+content-type: application/json
+
+{
+	"title": "React patterns",
+	"url": "https://reactpatterns.com/",
+	"likes": 7
+}
+
+###
+
+POST http://localhost:3003/api/blogs/
+content-type: application/json
+
+{
+	"url": "https://reactpatterns.com/",
+	"likes": 7
+}
+
+
+### 
+
+
+PUT http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+content-type: application/json
+
+{
+	"title": "Updated",
+	"url": "https://reactpatterns.com/",
+	"likes": 7
+}

@@ -1,0 +1,31 @@
+POST http://localhost:3003/api/login/
+content-type: application/json
+
+{
+	"username":"mluukkai",
+	"name":"Matti Luukkainen",
+	"password":"salainen"
+}
+
+###
+
+POST http://localhost:3003/api/login/
+content-type: application/json
+
+{
+	"username":"mluukkai",
+	"name":"Matti Luukkainen",
+	"password":"$2b$10$gHGTd2lAuSBFvNa/aZgDeebscj86dlD.xanWlTpKWwG6LAGGpY6Ke"
+}
+
+
+###
+
+POST http://localhost:3003/api/login/
+content-type: application/json
+
+{
+	"username":"nonexistent",
+	"name":"Matti Luun",
+	"password":"badpass"
+}
