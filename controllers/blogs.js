@@ -16,6 +16,7 @@ const decodeToken = (token) => {
 // DELETE
 blogsRouter.delete('/:id', async (request, response) => {
   const decodedToken = decodeToken(request.token)
+  console.log(decodedToken)
   if (!decodedToken?.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
   }
@@ -25,7 +26,7 @@ blogsRouter.delete('/:id', async (request, response) => {
     return response.status(404).end()
   }
 
-  if (blog.author.toString() !== decodedToken.id.toString()) {
+  if (blog.user.toString() !== decodedToken.id.toString()) {
     return response.status(403).end()
   }
 
@@ -38,13 +39,13 @@ blogsRouter.delete('/:id', async (request, response) => {
 
 // GET all
 blogsRouter.get('/', async (request, response) => {
-  const blogs = await Blog.find({}).populate('author')
+  const blogs = await Blog.find({}).populate('user')
   response.json(blogs)
 })
 
 // GET one
 blogsRouter.get('/:id', async (request, response) => {
-  const blog = await Blog.findById(request.params.id).populate('author')
+  const blog = await Blog.findById(request.params.id).populate('user')
   if (blog) {
     response.json(blog)
   } else {
@@ -66,7 +67,7 @@ blogsRouter.post('/', async (request, response) => {
 
   const blog = new Blog({
     ...request.body,
-    author: user._id
+    user: user._id
   })
 
   const result =  await blog.save()
@@ -75,17 +76,39 @@ blogsRouter.post('/', async (request, response) => {
 
 // PUT
 blogsRouter.put('/:id', async (request, response) => {
-  const blog = request.body
-  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, {
-    new: true,
-    runValidators: true,
-    context: 'query'
-  })
-  if (updatedBlog) {
-    response.json(updatedBlog)
-  } else {
-    response.status(404).end()
+  const decodedToken = decodeToken(request.token)
+  if (!decodedToken?.id) {
+    return response.status(401).json({ error: 'token missing or invalid' })
   }
+  const blog = await Blog.findById(request.params.id)
+
+  const updatedBlog = {
+    ...request.body,
+    // If user got populated it can create issues
+    user: request.body.user.id ? request.body.user.id : request.body.user
+  }
+
+  if (!blog) {
+    return response.status(404).end()
+  }
+
+  // if (blog.user.toString() !== decodedToken.id.toString()) {
+  //   return response.status(403).end()
+  // }
+
+  const result = await Blog.findByIdAndUpdate(
+    request.params.id,
+    updatedBlog,
+    {
+      new: true,
+      runValidators: true,
+      context: 'query'
+    }
+  ).populate('user')
+  if (!result) {
+    return response.status(404).end()
+  }
+  response.status(200).json(result)
 })
 
 module.exports = blogsRouter

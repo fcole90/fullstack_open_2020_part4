@@ -66,6 +66,7 @@ test('if the likes property is missing from the request, it will default to the 
 
   const newBlog = {
     title: 'Test 0 Likes',
+    author: 'Test Author',
     url: 'https://testing.succeeds.org',
     //likes is missing
   }
@@ -100,6 +101,7 @@ test('if the title and url properties are missing from the request data, the bac
 test('creating a new blog succeeds', async () => {
   const newBlog = {
     title: 'Test new Blog',
+    author: 'Test Author',
     url: 'https://creating.a.new.blog.succeeds.org',
   }
 

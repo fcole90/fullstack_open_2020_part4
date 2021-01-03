@@ -59,7 +59,7 @@ const authorIDs = {
 const getListWithManyBlogsAuthorIDs = () => getListWithManyBlogs().map(blog => (
   {
     ...blog,
-    author: authorIDs[blog.author]
+    user: authorIDs[blog.author]
   }
 ))
 

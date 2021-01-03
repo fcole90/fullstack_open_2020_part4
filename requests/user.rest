@@ -1,27 +1,27 @@
-GET http://localhost:3003/api/users/
+GET http://localhost:3001/api/users/
 
 ###
 
-GET http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+GET http://localhost:3001/api/blogs/5fd0a6e2a70cfcfc7af22d26/
 
 ###
-DELETE http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+DELETE http://localhost:3001/api/blogs/5fd0a6e2a70cfcfc7af22d26/
 
 ###
 
-POST http://localhost:3003/api/users/
+POST http://localhost:3001/api/users/
 content-type: application/json
 
 {
-	"username":"mluukkai",
-	"name":"Matti Luukkainen",
-	"password":"salainen"
+	"username":"tester",
+	"name":"Admininstrator",
+	"password":"pass"
 }
 
 
 ###
 
-POST http://localhost:3003/api/users/
+POST http://localhost:3001/api/users/
 content-type: application/json
 
 
@@ -35,7 +35,7 @@ content-type: application/json
 ### 
 
 
-PUT http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+PUT http://localhost:3001/api/blogs/5fd0a6e2a70cfcfc7af22d26/
 content-type: application/json
 
 {

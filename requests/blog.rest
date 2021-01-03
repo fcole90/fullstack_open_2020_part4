@@ -1,38 +1,39 @@
-GET http://localhost:3003/api/blogs/
+GET http://localhost:3001/api/blogs/
 
 ###
 
-GET http://localhost:3003/api/blogs/5fd221801aa6881f9aad53c7/
+GET http://localhost:3001/api/blogs/5fd640ca9c76c8148c3afbbe/
 
 ###
-DELETE http://localhost:3003/api/blogs/5fd285e319f073172a5e1477/
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZmQyMDc2MzJmZGYxOGRhNzJjYzFkNTIiLCJpYXQiOjE2MDc2MTYwMTF9.hWg2jviVZkxWM7XqZJYBI4e-lKD_DizHj3vdIf8wIPA
-
+DELETE http://localhost:3001/api/blogs/5fde03b61fbb849f4cbf5b61/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI1ZmQ0ZGEyZTc1YzM5ZjRmYWMzNmEwNmYiLCJpYXQiOjE2MDc4OTA3MTZ9.U4mBD2oM7bNwyZerJ-xtzrWXII14SBlqdsseBumC-r0
 ###
 
-POST http://localhost:3003/api/blogs/
+POST http://localhost:3001/api/blogs/
 content-type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZmQyMDc2MzJmZGYxOGRhNzJjYzFkNTIiLCJpYXQiOjE2MDc2MTYwMTF9.hWg2jviVZkxWM7XqZJYBI4e-lKD_DizHj3vdIf8wIPA
 
 {
 	"title": "Delete me",
+	"author": "Someone",
 	"url": "https://reactpatterns.com/",
 	"likes": 7
 }
 
 ###
-POST http://localhost:3003/api/blogs/
+POST http://localhost:3001/api/blogs/
 content-type: application/json
 
 {
-	"title": "React patterns",
+	"title": "Paint with Bob",
+	"author": "Bob Ross",
 	"url": "https://reactpatterns.com/",
 	"likes": 7
 }
 
 ###
 
-POST http://localhost:3003/api/blogs/
+POST http://localhost:3001/api/blogs/
 content-type: application/json
 
 {
@@ -40,15 +41,46 @@ content-type: application/json
 	"likes": 7
 }
 
-
-### 
-
-
-PUT http://localhost:3003/api/blogs/5fd0a6e2a70cfcfc7af22d26/
+###
+# No token
+PUT http://localhost:3001/api/blogs/5fd4e44e1c66cbf9e41c5572/
 content-type: application/json
 
 {
-	"title": "Updated",
-	"url": "https://reactpatterns.com/",
-	"likes": 7
+    "likes": 8,
+    "title": "Delete me",
+    "author": "Someone",
+    "url": "https://reactpatterns.com/",
+	  "user": "5fd207632fdf18da72cc1d52"
 }
+
+###
+# With token
+PUT http://localhost:3001/api/blogs/5fd640ca9c76c8148c3afbbe/
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZmQyMDc2MzJmZGYxOGRhNzJjYzFkNTIiLCJpYXQiOjE2MDc2MTYwMTF9.hWg2jviVZkxWM7XqZJYBI4e-lKD_DizHj3vdIf8wIPA
+
+{
+    "likes": 20,
+    "title": "Awesome Blog",
+    "author": "Bob",
+    "url": "http:jkdhkg",
+    "user": "5fd4da2e75c39f4fac36a06f",
+    "id": "5fd640ca9c76c8148c3afbbe"
+}
+
+
+###
+# Check like not working
+PUT  http://localhost:3001/api/blogs/5fd4e44e1c66cbf9e41c5572
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZmQyMDc2MzJmZGYxOGRhNzJjYzFkNTIiLCJpYXQiOjE2MDc2MTYwMTF9.hWg2jviVZkxWM7XqZJYBI4e-lKD_DizHj3vdIf8wIPA
+
+{
+    "likes": 7,
+    "title": "Paint with Bob",
+    "author": "Bob Ross",
+    "url": "https://reactpatterns.com/",
+    "user": "5fd207632fdf18da72cc1d52",
+    "id": "5fd4e46f1c66cbf9e41c5573"
+  }
